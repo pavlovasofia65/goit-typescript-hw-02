@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import './App.css'
 import fetchPhotos from '../gallery-api.ts'
-import ErrorMessage from '../ErrorMessage/ErrorMessage.ts'
-import ImageGallery from '../ImageGallery/ImageGallery.ts'
-import ImageModal from '../ImageModal/ImageModal.ts'
-import Loader from '../Loader/Loader.js'
-import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn.ts'
-import SearchBar from '../SearchBar/SearchBar.ts'
+import ErrorMessage from '../ErrorMessage/ErrorMessage.tsx'
+import ImageGallery from '../ImageGallery/ImageGallery.tsx'
+import ImageModal from '../ImageModal/ImageModal.tsx'
+import Loader from '../Loader/Loader.tsx'
+import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn.tsx'
+import SearchBar from '../SearchBar/SearchBar.tsx'
 
 type Photo = {
   id: number;
