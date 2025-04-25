@@ -1,9 +1,15 @@
 import css from './ImageModal.module.css'
-import { useState } from 'react'
+// import { useState } from 'react'
 import Modal from 'react-modal';
 Modal.setAppElement('#root');
 
-export default function ImageModal({ isOpen, onClose, imageSrc }) {
+interface Props {
+    isOpen: boolean;
+    onClose: () => void;
+    imageSrc: string | null;
+}
+
+const ImageModal = ({ isOpen, onClose, imageSrc }: Props) => {
     return (
         <Modal
             isOpen={isOpen}
@@ -15,3 +21,4 @@ export default function ImageModal({ isOpen, onClose, imageSrc }) {
         </Modal>
     );
 }
+export default ImageModal;

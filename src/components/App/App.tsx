@@ -11,10 +11,11 @@ import SearchBar from '../SearchBar/SearchBar.js'
 type Photo = {
   id: number;
   urls: {
-    small: string;
+      regular: string;
+      small: string;
   };
-  description: string;
-};
+      description?: string;
+}
 
 function App() {
   const [gallery, setGallery] = useState<Photo[]>([]);
