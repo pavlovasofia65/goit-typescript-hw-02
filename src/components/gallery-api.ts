@@ -4,9 +4,23 @@ const key = 'pwrvRKN0wakqlu-l3I8PUgYcHAPBjzENYgyQdtIGexs';
 
 axios.defaults.baseURL = `https://api.unsplash.com`;
 
-async function fetchPhotos (search: string, page = 1){
+type Photo = {
+    id: number;
+    urls: {
+        small: string;
+    };
+    description: string;
+};
+
+type Response = {
+    results: Photo[];
+    total: number;
+    total_pages: number;
+};
+
+async function fetchPhotos(search: string, page?: number): Promise<Photo[]>{
     try {
-        const response = await axios.get('search/photos', {
+        const response = await axios.get<Response>('search/photos', {
             params:
             {
                 query: search,
