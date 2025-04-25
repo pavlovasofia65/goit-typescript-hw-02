@@ -17,7 +17,7 @@ type PhotoProps = {
 
 export default function ImageCard({photo, onClick}: PhotoProps){
     return (
-        <div onClick={onClick}>
+        <div onClick={onClick} className={css.imgageCard}>
             <img src={photo.urls.small} alt={photo.description} />
         </div>
 );

@@ -7,7 +7,7 @@ type ErrorMessageProps = {
 export default function ErrorMessage({message}:ErrorMessageProps){
     return (
     <>
-    <p>Something went wrong 🙁</p>
+    <p className={css.error}>Something went wrong 🙁</p>
     <p>{message}</p>
     </>)
 }

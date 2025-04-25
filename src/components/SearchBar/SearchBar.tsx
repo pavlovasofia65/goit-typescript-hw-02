@@ -1,7 +1,7 @@
 import css from './SearchBar.module.css'
 import toast, { Toaster } from 'react-hot-toast';
 import {useRef} from 'react';
-import React, { FormEvent } from 'react';
+import { FormEvent } from 'react';
 
 type SearchBarProps = {
     onSubmit: (value: string) => void;
@@ -12,6 +12,7 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
 
     const handleSubmit = (evt: FormEvent) => {
         evt.preventDefault();
+        if (!inputRef.current) return;
         const value = inputRef.current.value.trim();
         if (value === '') {
             toast.error('Enter a search!');
@@ -25,7 +26,7 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
     return (
         <header>
             <Toaster/>
-        <form onSubmit ={handleSubmit}>
+        <form onSubmit ={handleSubmit} className={css.searchBox}>
             <input
                 type="text"
                 autoComplete="off"

@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import './App.css'
-import fetchPhotos from '../gallery-api.js'
-import ErrorMessage from '../ErrorMessage/ErrorMessage.js'
-import ImageGallery from '../ImageGallery/ImageGallery.js'
-import ImageModal from '../ImageModal/ImageModal.js'
+import fetchPhotos from '../gallery-api.ts'
+import ErrorMessage from '../ErrorMessage/ErrorMessage.ts'
+import ImageGallery from '../ImageGallery/ImageGallery.ts'
+import ImageModal from '../ImageModal/ImageModal.ts'
 import Loader from '../Loader/Loader.js'
-import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn.js'
-import SearchBar from '../SearchBar/SearchBar.js'
+import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn.ts'
+import SearchBar from '../SearchBar/SearchBar.ts'
 
 type Photo = {
   id: number;
@@ -32,9 +32,9 @@ function App() {
       setError(null);
       setGallery([]);
       setSearch(search);
-      const data = await fetchPhotos(search);
+      const data = await fetchPhotos(search) as Photo[];
       setGallery(data);
-    } catch(error: any) {
+    } catch(error) {
       console.log(error)
     } finally {
       setLoading(false);
@@ -44,11 +44,11 @@ function App() {
     try {
       setLoading(true);
       const nextPage = page + 1;
-      const data = await fetchPhotos(search, nextPage);
+      const data = await fetchPhotos(search, nextPage) as Photo[];
       setGallery((prevGallery) => [...prevGallery, ...data]);
       setPage(nextPage);
     } catch (error) {
-      setError("Failed to load more images.");
+      setError(`Failed to load more images. Error ${error}`);
     } finally {
       setLoading(false);
     }
